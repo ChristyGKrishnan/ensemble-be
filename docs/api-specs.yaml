@@ -56,6 +56,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateUserSuccess'
+  /v1/workflow:
+    get:
+      tags:
+        - v1
+      responses:
+        '200':
+          description: Application helath details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Worflow'
+    post:
+      tags:
+        - v1
+      description: Endpoint to create/add new workflow
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkflowRequest'
+      responses:
+        '200':
+          description: Application helath details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Worflow'
 components:
   schemas:
     Skills:
@@ -129,4 +157,26 @@ components:
                             description: Id generated for created user.
                             example: 1
                       - $ref: '#/components/schemas/Skills'
+    Worflow:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Workflow name.
+          example: Text
+        config:
+          type: object
+          description: workflow config.
+        user_id:
+          type: integer
+          description: Workflow associated user.
+    CreateWorkflowRequest:
+      allOf:
+        - $ref: '#/components/schemas/Worflow'
+        - type: object
+          properties:
+            config:
+              type: object
+              items:
+                $ref: '#/components/schemas/Worflow'
 tags: []
