@@ -24,7 +24,7 @@ export default (sequelize, DataTypes) => {
     updatedAt: DataTypes.DATE,
   }, {
     tableName: 'workflow',
-    underscored: true
+    underscored: true,
   });
 
   // User.associate = models => {

@@ -9,6 +9,6 @@ const { validate } = new Validator();
 
 router
   .route('/')
-  .post(validate({ body: waiSchema }), generateWAI)
+  .post(validate({ body: waiSchema }), generateWAI);
 
 export default router;

@@ -1,0 +1,89 @@
+[
+    {
+      "type": "Audio",
+      "subtypes": [
+        {
+          "models": [
+            {
+              "id": "b73467b3-5041-40c8-81fd-0b8c46630e3f",
+              "name": "SeamlessM4T",
+              "endpoint": "/seamlessm4t/T2ST",
+              "paid": false,
+              "inputFormat": [
+                {
+                  "field": "text",
+                  "type": "text"
+                },
+                {
+                  "field": "src",
+                  "type": "text"
+                },
+                {
+                  "field": "target",
+                  "type": "text"
+                }
+              ],
+              "outputFormat": {
+                "field": "audio",
+                "type": "audio"
+              }
+            }
+          ],
+          "key": "T2ST",
+          "name": "Text to Speech Translation"
+        },
+        {
+          "key": "S2ST",
+          "name": "Speech to Speech Translation",
+          "models": [
+            {
+              "id": "e9e6da6a-8380-4d67-ba77-8861069749b1",
+              "name": "SeamlessM4T",
+              "endpoint": "/seamlessm4t/S2ST",
+              "paid": false,
+              "inputFormat": [
+                {
+                  "field": "audio",
+                  "type": "audio"
+                },
+                {
+                  "field": "target",
+                  "type": "text"
+                }
+              ],
+              "outputFormat": {
+                "field": "audio",
+                "type": "audio"
+              }
+            }
+          ]
+        },
+        {
+          "key": "S2TT",
+          "name": "Speech to Text Translation",
+          "models": [
+            {
+              "id": "9e25614d-5da3-434c-957e-63c43f7ac8b4",
+              "name": "SeamlessM4T",
+              "endpoint": "/seamlessm4t/S2TT",
+              "paid": false,
+              "inputFormat": [
+                {
+                  "field": "audio",
+                  "type": "audio"
+                },
+                {
+                  "field": "target",
+                  "type": "text"
+                }
+              ],
+              "outputFormat": {
+                "field": "text",
+                "type": "text"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]

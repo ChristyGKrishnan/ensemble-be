@@ -1,5 +1,6 @@
 import httpStatus from 'http-status';
-import { findAll, groupByCategoryAnType } from '../services/model.service.js';
+import { findAll } from '../services/model.service.js';
+import modelsHierarchy from '../config/models.js';
 import * as errors from '../utils/api-error.js';
 import * as response from '../middlewares/response-handler.js';
 
@@ -17,13 +18,8 @@ const getModels = async (req, res) => {
 };
 
 const getModelByHierarchy = async (req, res) => {
-  try {
-    const models = await groupByCategoryAnType();
-    return res.status(httpStatus.OK).send(responseHandler(models));
-  } catch (error) {
-    console.log(error);
-    throw new InternalServerError();
-  }
+  const models = modelsHierarchy;
+  return res.status(httpStatus.OK).send(responseHandler(models));
 };
 
 export { getModels, getModelByHierarchy };
