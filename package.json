@@ -1,7 +1,7 @@
 {
-  "name": "pg-sequelize",
+  "name": "ensemble-api",
   "version": "1.0.0",
-  "description": "Node PostgreSQL Sequelize boilerplate",
+  "description": "Ensemble APIs",
   "main": "./src/server.js",
   "exports": "./src/server.js",
   "scripts": {
@@ -15,11 +15,7 @@
     "lint:fix": "eslint . --fix",
     "esdoc": "esdoc"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Chetan07j/node-pg-sequelize.git"
-  },
-  "author": "chetan0779@gmail.com",
+  "author": "Keyminds",
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.3.0",
