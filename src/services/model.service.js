@@ -8,7 +8,10 @@ const findById = async modelId => Model.findOne({
   where: { id: modelId },
 });
 
+const groupByCategoryAnType = async () => Model.findAll({ group: 'category' });
+
 export {
   findAll,
   findById,
+  groupByCategoryAnType,
 };
