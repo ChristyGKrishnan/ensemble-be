@@ -1,9 +1,3 @@
-/**
- * User service which serves DB operation
- * required by user controller
- *
- * @author Chetan Patil
- */
 import db from '../models/index.js';
 
 /**
