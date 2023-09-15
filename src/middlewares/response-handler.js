@@ -8,3 +8,8 @@ export default body => ({
   success: true,
   body,
 });
+
+export const failure = body => ({
+  success: false,
+  body,
+});
