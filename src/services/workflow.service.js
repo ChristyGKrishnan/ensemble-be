@@ -21,7 +21,12 @@ const findAll = async (userId) => {
   if (userId != null)
     filter.user_id = userId;
 
-  return Workflow.findAll({ where: filter })
+  return Workflow.findAll({
+    where: filter,
+    order: [
+      [ 'updatedAt', 'DESC']
+    ]
+  })
 };
 
 const findById = async workflowId => Workflow.findOne({
