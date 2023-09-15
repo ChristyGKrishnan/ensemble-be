@@ -24,6 +24,8 @@ const responseHandler = response.default;
  */
 const { NotFoundError } = errors.default;
 
+const n8nWebhookEndpoint = process.env.N8N_TRIGGER_ENDPOINT;
+
 /**
  * Function which provides functionality
  * to add/create new workflow in system
@@ -37,7 +39,6 @@ const addWorkflow = async (req, res) => {
 };
 
 const updateWorkflow = async (req, res) => {
-  console.log(req.body);
   const workflowDetails = await update(req.params.id, req.body);
   res.status(httpStatus.CREATED).send(responseHandler(workflowDetails));
 };
@@ -75,16 +76,25 @@ const getWorkflow = async (req, res) => {
 
 const triggerWorkflow = async (req, res) => {
   try {
-    const workflow = await findById(req.params.workflowId);
+    const workflow = await findById(req.params.id);
     if (!workflow) {
       throw new NotFoundError();
     }
+
+    const startNode = workflow.config.nodes.find(node => node.type == "startNode");
+
     const log = await createLog(workflow);
-    const n8nreponse = await axios.post(`http://localhost:5678/webhook-test/${workflow.n8nid}`, req.body);
+    let n8nreponse = null;
+    if (startNode) {
+      n8nreponse = await axios.post(`${n8nWebhookEndpoint}/${startNode.id}`, req.body);
+    } else {
+      n8nreponse = await axios.post(`${n8nWebhookEndpoint}/19`, req.body);
+    }
+    
     await endLog(log);
     res.status(n8nreponse.status).send(n8nreponse.data);
   } catch (error) {
-  // Handle errors
+    console.error(error);
     res.status(500).send(error.message);
   }
 };

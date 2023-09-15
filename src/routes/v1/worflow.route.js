@@ -112,14 +112,11 @@ router
 
 router
   .route('/:id')
-  .put(updateWorkflow);
-
-router
-  .route('/:id')
+  .put(updateWorkflow)
   .get(getWorkflow);
 
 router
-  .route('/trigger')
+  .route('/trigger/:id')
   .post(triggerWorkflow);
 
 export default router;
