@@ -1,0 +1,107 @@
+[
+    {
+      "type": "Multimodel",
+      "subtypes": [
+        {
+          "key": "T2I",
+          "name": "Text to Image",
+          "models": [
+            {
+              "id": "cf78d719-a9a5-48c8-83ac-928044735862",
+              "name": "Stable Diffusion",
+              "endpoint": "/sd",
+              "paid": false,
+              "inputFormat": [
+                {
+                  "field": "text",
+                  "type": "text"
+                }
+              ],
+              "outputFormat": {
+                "field": "image",
+                "type": "image"
+              }
+            },
+            {
+              "id": "fb43f704-1579-4d3f-a9e2-84a58276b8c5",
+              "name": "Open Journey",
+              "endpoint": "/open-journey",
+              "paid": false,
+              "inputFormat": [
+                {
+                  "field": "inputs",
+                  "type": "text"
+                }
+              ],
+              "outputFormat": {
+                "field": "image",
+                "type": "image"
+              }
+            },
+            {
+              "id": "d769ec13-067e-4736-abaa-3d8e93a52a30",
+              "name": "Real Vision",
+              "endpoint": "/real-vis",
+              "paid": false,
+              "inputFormat": [
+                {
+                  "field": "text",
+                  "type": "text"
+                }
+              ],
+              "outputFormat": {
+                "field": "image",
+                "type": "image"
+              }
+            },
+            {
+              "id": "fbab68fe-84d7-4414-b3ad-86053af5cf42",
+              "name": "Anything",
+              "endpoint": "/anything",
+              "paid": false,
+              "inputFormat": [
+                {
+                  "field": "inputs",
+                  "type": "text"
+                }
+              ],
+              "outputFormat": {
+                "field": "image",
+                "type": "image"
+              }
+            }
+          ]
+        },
+        {
+          "models": [
+            {
+              "id": "afc66efb-3256-40d5-b786-4dbb33cf5e30",
+              "name": "Stable Diffusion - InPainting",
+              "endpoint": "/ip",
+              "paid": false,
+              "inputFormat": [
+                {
+                  "field": "text",
+                  "type": "text"
+                },
+                {
+                  "field": "image",
+                  "type": "image"
+                },
+                {
+                  "field": "mask",
+                  "type": "image"
+                }
+              ],
+              "outputFormat": {
+                "field": "image",
+                "type": "image"
+              }
+            }
+          ],
+          "key": "TI2I",
+          "name": "Text Image to Image"
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,142 @@
+[
+    {
+      "type": "NLP",
+      "subtypes": [
+        {
+          "name": "Language Detection",
+          "key": "LanguageDetection",
+          "models": [
+            {
+              "id": "07564735-ad27-4c03-9b07-5f5382b4aeaf",
+              "name": "Language Detection",
+              "input": [
+                {
+                  "field": "text",
+                  "type": "text"
+                }
+              ],
+              "output": {
+                "field": "src",
+                "type": "text"
+              },
+              "endpoint": "/detect-lang"
+            }
+          ]
+        },
+        {
+          "key": "T2TT",
+          "name": "Text to Text Translation",
+          "models": [
+            {
+              "id": "c03eea72-ed4f-462b-a1b1-1277fe9b90f2",
+              "name": "SeamlessM4T",
+              "endpoint": "/seamlessm4t/T2TT",
+              "paid": false,
+              "inputFormat": [
+                {
+                  "field": "source",
+                  "type": "text"
+                },
+                {
+                  "field": "img",
+                  "type": "image"
+                }
+              ],
+              "outputFormat": {
+                "field": "text",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "key": "PromptGenerator",
+          "name": "Prompt Generator",
+          "models": [
+            {
+              "id": "9d4323ff-0610-45c9-b316-724a5bcb7850",
+              "name": "Magic Prompt",
+              "endpoint": "/magic-prompt",
+              "paid": false,
+              "inputFormat": [
+                {
+                  "field": "text",
+                  "type": "text"
+                }
+              ],
+              "outputFormat": {
+                "field": "text",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "key": "T2T",
+          "name": "Text to Text",
+          "models": [
+            {
+              "id": "fce46634-376d-41bc-a9ab-684753649730",
+              "name": "Chat GPT",
+              "endpoint": "/chatgpt",
+              "paid": true,
+              "inputFormat": [
+                {
+                  "field": "text",
+                  "type": "text"
+                }
+              ],
+              "outputFormat": {
+                "field": "text",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "key": "Summarizer",
+          "name": "Summarizer",
+          "models": [
+            {
+              "id": "5822e914-b382-48be-bc75-6ce10328c6aa",
+              "name": "Chat GPT",
+              "endpoint": "/summarizer/chatgpt",
+              "paid": false,
+              "inputFormat": [
+                {
+                  "field": "text",
+                  "type": "text"
+                }
+              ],
+              "outputFormat": {
+                "field": "text",
+                "type": "text"
+              }
+            }
+          ]
+        },
+        {
+          "key": "Sentiment",
+          "name": "Sentiment",
+          "models": [
+            {
+              "id": "ae6ff1bb-bf92-4259-98aa-f696b11dcb55",
+              "name": "Sentiment Analyzer",
+              "endpoint": "/sentiment",
+              "paid": false,
+              "inputFormat": [
+                {
+                  "field": "text",
+                  "type": "text"
+                }
+              ],
+              "outputFormat": {
+                "field": "sentiment",
+                "type": "text"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]

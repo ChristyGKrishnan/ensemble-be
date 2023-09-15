@@ -4,14 +4,16 @@
  */
 import httpStatus from 'http-status';
 
+import axios from 'axios';
 import * as errors from '../utils/api-error.js';
 import * as response from '../middlewares/response-handler.js';
 import {
   findAll,
   findById,
   create,
-  update
+  update,
 } from '../services/workflow.service.js';
+import { createLog, endLog } from '../services/logs.service.js';
 
 /**
  * @constant {function} responseHandler - function to form generic success response
@@ -48,7 +50,7 @@ const updateWorkflow = async (req, res) => {
  * @param {*} res - express HTTP response object
  */
 const getWorkflows = async (req, res) => {
-  const userId = req.params.userId;
+  const { userId } = req.params;
   const workflows = await findAll(userId);
   res.status(httpStatus.OK).send(responseHandler(workflows));
 };
@@ -71,9 +73,26 @@ const getWorkflow = async (req, res) => {
   res.status(httpStatus.OK).send(responseHandler(workflow));
 };
 
+const triggerWorkflow = async (req, res) => {
+  try {
+    const workflow = await findById(req.params.workflowId);
+    if (!workflow) {
+      throw new NotFoundError();
+    }
+    const log = await createLog(workflow);
+    const n8nreponse = await axios.post(`http://localhost:5678/webhook-test/${workflow.n8nid}`, req.body);
+    await endLog(log);
+    res.status(n8nreponse.status).send(n8nreponse.data);
+  } catch (error) {
+  // Handle errors
+    res.status(500).send(error.message);
+  }
+};
+
 export {
   addWorkflow,
   updateWorkflow,
   getWorkflows,
   getWorkflow,
+  triggerWorkflow,
 };

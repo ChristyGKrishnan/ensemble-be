@@ -20,64 +20,67 @@ module.exports = {
   
   
   
-  INSERT INTO models ( name, typeenum, type, paid, input_format, output_format, category)
+  INSERT INTO models ( name, typeenum, type, paid, endpoint, input_format, output_format, category)
   VALUES 
-  ('SeamlessM4T', 'T2TT', 'Text to Text Translation', FALSE, 
-   '[{"field":"source", "type":"text"}, {"field":"img", "type":"image"}]',  '{"field":"text"}', 'Multimodel')
-   
-   ,
+  ('SeamlessM4T', 'T2TT', 'Text to Text Translation', FALSE, '/seamlessm4t/T2TT',
+   '[{"field":"source", "type":"text"}, {"field":"img", "type":"image"}]',  '{"field":"text","type": "text"}', 'NLP'),
   
-  ('SeamlessM4T', 'T2ST', 'Text to Speech Translation', FALSE, 
+  ('SeamlessM4T', 'T2ST', 'Text to Speech Translation', FALSE, '/seamlessm4t/T2ST',
    '[
-    {"field": "text", "type": "str"},
-    {"field": "src", "type": "str"},
-    {"field": "target", "type": "str"}
+    {"field": "text", "type": "text"},
+    {"field": "src", "type": "text"},
+    {"field": "target", "type": "text"}
   ]', 
    ' {
       "field": "audio",
-      "type": "base 64"
+      "type": "audio"
     }', 'Audio'),
   
-  ('SeamlessM4T', 'S2ST', 'Speech to Speech Translation', FALSE, 
-   '[{"field": "audio", "type": "audio"}, {"field": "target", "type": "text"}]', '{"audio": "base 64"}', 'Audio'),
+  ('SeamlessM4T', 'S2ST', 'Speech to Speech Translation', FALSE, '/seamlessm4t/S2ST',
+   '[{"field": "audio", "type": "audio"}, {"field": "target", "type": "text"}]', '{"field":"audio","type":"audio"}', 'Audio'),
   
-  ('SeamlessM4T', 'S2TT', 'Speech to Text Translation', FALSE, 
+  ('SeamlessM4T', 'S2TT', 'Speech to Text Translation', FALSE, '/seamlessm4t/S2TT',
    '[{"field": "audio", "type": "audio"}, {"field": "target", "type": "text"}]', 
    '{"field": "text", "type": "text"}', 'Audio'),
   
-  ('Stable Diffusion', 'T2I', 'Text to Image', FALSE, 
-   '[{"field": "inputs", "type": "text"}]', 
-   '{"image": "Je suis Motto."}', 'Multimodel'),
+  ('Stable Diffusion', 'T2I', 'Text to Image', FALSE, '/sd',
+   '[{"field": "text", "type": "text"}]', 
+   '{"field": "image", "type": "image"}', 'Multimodel'),
   
-  ('Open Journey', 'T2I', 'Text to Image', FALSE, 
+  ('Open Journey', 'T2I', 'Text to Image', FALSE, '/open-journey',
    '[{"field": "inputs", "type": "text"}]', 
-   '{"image": "Je suis Motto."}', 'Multimodel'),
+   '{"field": "image", "type": "image"}', 'Multimodel'),
   
-  ('Real Vision', 'T2I', 'Text to Image', FALSE, 
+  ('Real Vision', 'T2I', 'Text to Image', FALSE, '/real-vis',
+   '[{"field": "text", "type": "text"}]', 
+   '{"field": "image", "type": "image"}', 'Multimodel'),
+  
+  ('Anything', 'T2I', 'Text to Image', FALSE, '/anything',
    '[{"field": "inputs", "type": "text"}]', 
-   '{"image": "Je suis Motto."}', 'Multimodel'),
+   '{"field": "image", "type": "image"}', 'Multimodel'),
   
-  ('Anything', 'T2I', 'Text to Image', FALSE, 
-   '[{"field": "inputs", "type": "text"}]', 
-   '{"image": "Je suis Motto."}', 'Multimodel'),
-  
-  ('Magic Prompt', 'PromptGenerator','Prompt Generator', FALSE, 
+  ('Magic Prompt', 'PromptGenerator','Prompt Generator', FALSE, '/magic-prompt',
    '[{"field": "text", "type": "text"}]', 
    '{"field": "text", "type": "text"}', 'NLP'),
   
-  ('Stable Diffusion - InPainting', 'TI2I', 'Text Image to Image', FALSE, 
+  ('Stable Diffusion - InPainting', 'TI2I', 'Text Image to Image', FALSE, '/ip',
    '[{"field": "text", "type": "text"}, {"field": "image", "type": "image"}, {"field": "mask", "type": "image"}]', 
-   '{"image": "Je suis Motto."}', 'Multimodel'),
+   '{"field": "image", "type": "image"}', 'Multimodel'),
   
-  ('Chat GPT', 'T2T', 'Text to Text', TRUE, 
+  ('Chat GPT', 'T2T', 'Text to Text', TRUE, '/chatgpt',
    '[{"field": "text", "type": "text"}]', 
    '{"field": "text", "type": "text"}', 'NLP'),
   
-  ('Chat GPT', 'T2T',  'Summarizer', FALSE, 
+  ('Chat GPT', 'Summarizer',  'Summarizer', FALSE, '/summarizer/chatgpt',
    '[{"field": "text", "type": "text"}]', 
    '{"field": "text", "type": "text"}', 'NLP'),
   
-  ('Sentiment', 'T2T', 'Sentiment', FALSE, NULL, NULL, 'NLP');
+  ('Sentiment Analyzer', 'Sentiment', 'Sentiment', FALSE, '/sentiment', '[{ "field": "text", "type": "text" }]', '{"field":"sentiment","type":"text"}', 'NLP'),
+
+  ('Language Detection', 'LanguageDetection',  'Language Detection', FALSE, '/detect-lang',
+   '[{"field": "text", "type": "text"}]', 
+   '{"field":"src","type":"text"}', 'NLP');
+  
     `);
   },
 
