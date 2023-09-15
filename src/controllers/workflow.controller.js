@@ -65,7 +65,7 @@ const getWorkflows = async (req, res) => {
  * @throws {NotFoundError} - if no workflow exists
  */
 const getWorkflow = async (req, res) => {
-  const workflow = await findById(req.params.workflowId);
+  const workflow = await findById(req.params.id);
   if (!workflow) {
     throw new NotFoundError();
   }
