@@ -6,6 +6,7 @@ import {
   updateWorkflow,
   getWorkflows,
   getWorkflow,
+  triggerWorkflow,
 } from '../../controllers/workflow.controller.js';
 
 const router = express.Router();
@@ -116,5 +117,9 @@ router
 router
   .route('/:id')
   .get(getWorkflow);
+
+router
+  .route('/trigger')
+  .post(triggerWorkflow);
 
 export default router;

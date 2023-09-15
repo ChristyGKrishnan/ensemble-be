@@ -16,33 +16,29 @@ const { Workflow } = db.db;
  *
  * @returns {Promise} User object array
  */
-const findAll = async (userId) => {
-  const filter = {}
-  if (userId != null)
-    filter.user_id = userId;
+const findAll = async userId => {
+  const filter = {};
+  if (userId != null) { filter.user_id = userId; }
 
   return Workflow.findAll({
     where: filter,
     order: [
-      [ 'updatedAt', 'DESC']
-    ]
-  })
+      ['updatedAt', 'DESC'],
+    ],
+  });
 };
 
 const findById = async workflowId => Workflow.findOne({
-  where: { id: workflowId }
+  where: { id: workflowId },
 });
-
 
 const create = async data => Workflow.create(data);
 
-const update = async (workflowId, data) => {
-  return Workflow.update(data, { where: { id: workflowId } })
-};
+const update = async (workflowId, data) => Workflow.update(data, { where: { id: workflowId } });
 
 export {
   findAll,
   findById,
   create,
-  update
+  update,
 };
