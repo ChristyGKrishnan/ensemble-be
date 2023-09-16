@@ -1,12 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
 
-const getIntermediateCodeNode = (count) => {
+const getIntermediateCodeNode = (count, startNodeName) => {
     const id = uuidv4();
     const x = 40;
     return {
         "parameters": {
             "mode": "runOnceForEachItem",
-            "jsCode": "\n\n// Loop over input items and add a new field called 'myNewField' to the JSON of \nconst dataFromWebhook = $('Webhook').item.json.body;\nconst dataFromtranslated =$input.item.json;\n\n// Merge the two objects, with $json.data taking precedence\nconst mergedData = { ...dataFromWebhook, ...dataFromtranslated };\n\nreturn { mergedData: mergedData };"
+            "jsCode": `\n\n// Loop over input items and add a new field called 'myNewField' to the JSON of \nconst dataFromWebhook = $('${startNodeName}').item.json.body;\nconst dataFromtranslated =$input.item.json;\n\n// Merge the two objects, with $json.data taking precedence\nconst mergedData = { ...dataFromWebhook, ...dataFromtranslated };\n\nreturn { mergedData: mergedData };`
         },
         "id": id,
         "name": `Code${count}`,
@@ -26,6 +26,15 @@ const updateAiNodeForN8n = (n8nWorkflowNode, workflowNode) => {
     n8nWorkflowNode.parameters.sendBody = true;
     n8nWorkflowNode.parameters.specifyBody = "json";
     n8nWorkflowNode.parameters.jsonBody = "={{ JSON.stringify($json.mergedData) }}";
+    n8nWorkflowNode.parameters.sendHeaders = true;
+    n8nWorkflowNode.parameters.headerParameters = {
+        "parameters": [
+            {
+                "name": "Content-Type",
+                "value": "application/json"
+            }
+        ]
+    };
     n8nWorkflowNode.parameters.options = {
         redirect: {
             redirect: {},
@@ -81,6 +90,8 @@ function mapToN8nWorkflowFormat(workflowData) {
 
     const intermediateCodeNodesAddedInfo = new Map();
     let codeNodeCount = 1;
+    let webhookNodeName = null;
+
 
     workflowData.config.nodes.forEach((workflowNode) => {
         const n8nWorkflowNode = {
@@ -99,6 +110,7 @@ function mapToN8nWorkflowFormat(workflowData) {
                 n8nWorkflowNode.parameters.responseMode = "lastNode";
                 n8nWorkflowNode.parameters.httpMethod = "POST";
                 n8nWorkflowNode.parameters.options = {};
+                webhookNodeName = workflowNode.data.label;
                 break;
             case "httpsNode":
                 n8nWorkflowNode.type = "n8n-nodes-base.httpRequest";
@@ -138,7 +150,7 @@ function mapToN8nWorkflowFormat(workflowData) {
             case "Sentiment":
             case "LanguageDetection":
                 updateAiNodeForN8n(n8nWorkflowNode, workflowNode)
-                const intermediateCodeNode = getIntermediateCodeNode(codeNodeCount++);
+                const intermediateCodeNode = getIntermediateCodeNode(codeNodeCount++, webhookNodeName);
                 n8nWorkflowFormat.nodes.push(intermediateCodeNode)
                 intermediateCodeNodesAddedInfo.set(workflowNode.id, {
                     codeNodeId: intermediateCodeNode.id,
