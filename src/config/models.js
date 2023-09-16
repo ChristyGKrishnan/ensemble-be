@@ -21,7 +21,7 @@ export default [
               "type": "text"
             },
             "endpoint": "/detect-lang",
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "2 days ago",
             "popularity": "2.5k"
           }
         ],
@@ -56,7 +56,7 @@ export default [
               "field": "text",
               "type": "text"
             },
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "2 days ago",
             "popularity": "5k"
           }
         ],
@@ -87,7 +87,7 @@ export default [
               "field": "text",
               "type": "text"
             },
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "1 days ago",
             "popularity": "3k"
           }
         ],
@@ -118,7 +118,7 @@ export default [
               "field": "text",
               "type": "text"
             },
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "1 days ago",
             "popularity": "7.5k"
           }
         ],
@@ -149,7 +149,7 @@ export default [
               "field": "text",
               "type": "text"
             },
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "1 days ago",
             "popularity": "2k"
           }
         ],
@@ -180,7 +180,7 @@ export default [
               "field": "sentiment",
               "type": "text"
             },
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "1 days ago",
             "popularity": "4.5k"
           }
         ],
@@ -216,7 +216,7 @@ export default [
               "field": "image",
               "type": "image"
             },
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "5 hour ago",
             "popularity": "6.5k"
           },
           {
@@ -234,7 +234,7 @@ export default [
               "field": "image",
               "type": "image"
             },
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "5 hour ago",
             "popularity": "8k"
           },
           {
@@ -252,7 +252,7 @@ export default [
               "field": "image",
               "type": "image"
             },
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "10 hour ago",
             "popularity": "9k"
           },
           {
@@ -270,7 +270,7 @@ export default [
               "field": "image",
               "type": "image"
             },
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "10 hour ago",
             "popularity": "10k"
           }
         ],
@@ -306,7 +306,7 @@ export default [
               "field": "image",
               "type": "image"
             },
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "11 days ago",
             "popularity": "4k"
           }
         ],
@@ -349,7 +349,7 @@ export default [
               "field": "audio",
               "type": "audio"
             },
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "11 days ago",
             "popularity": "3.5k"
           }
         ],
@@ -394,7 +394,7 @@ export default [
               "field": "audio",
               "type": "audio"
             },
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "11 days ago",
             "popularity": "6.5k"
           }
         ],
@@ -437,7 +437,7 @@ export default [
               "field": "text",
               "type": "text"
             },
-            "updatedAt": "2023-09-15T12:00:00Z",
+            "updatedAt": "11 days ago",
             "popularity": "9.5k"
           }
         ],

@@ -34,8 +34,8 @@ module.exports = {
     ('fed62b03-6b9e-4699-8686-84ff01c70535','Chat GPT',true,'http://192.168.3.117:5000/chatgpt','[{"field": "text", "type": "text"}]','{"field": "text", "type": "text"}','Text to Text','T2T','NLP'),
     ('cf88621f-57aa-4cef-9838-e4d05ceddb33','Chat GPT',false,'http://192.168.3.117:5000/summarizer/chatgpt','[{"field": "text", "type": "text"}]','{"field": "text", "type": "text"}','Summarizer','Summarizer','NLP'),
     ('ab4108bf-af16-4d16-8a98-a19d9a07c1f6','Sentiment Analyzer',false,'http://192.168.3.117:5000/sentiment','[{ "field": "text", "type": "text" }]','{"field":"sentiment","type":"text"}','Sentiment','Sentiment','NLP'),
-    ('513672ed-9aad-4c11-a659-1540b8d3fac5','Language Detection',false,'http://192.168.3.117:5000/detect-lang','[{"field": "text", "type": "text"}]','{"field":"src","type":"text"}','Language Detection','LanguageDetection','NLP');
-  
+    ('513672ed-9aad-4c11-a659-1540b8d3fac5','Language Detection',false,'http://192.168.3.117:5000/detect-lang','[{"field": "text", "type": "text"}]','{"field":"src","type":"text"}','Language Detection','LanguageDetection','NLP'),
+    ('Kosmos',false,'http://192.168.3.117:5000/kosmos','[{"field":"image","type":"image"}]','[{"field":"text","type":"text"}]','Image to Text','I2T','Multimodel');
     `);
   },
 
