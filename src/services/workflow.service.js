@@ -5,7 +5,7 @@
  * @author Chetan Patil
  */
 import db from '../models/index.js';
-import { createWorkflowInN8n, updateWorkflowInN8n } from '../services/n8n.service.js'
+import { createWorkflowInN8n, updateWorkflowInN8n, activateWorkflow } from '../services/n8n.service.js'
 import { mapToN8nWorkflowFormat } from '../utils/transformer.js'
 /**
  * @constant {Sequelize.models} - Workflow model extracted from db import
@@ -43,6 +43,7 @@ const create = async data => {
     console.log("Creating workflow in N8N...");
     const n8nWorkflow = await createWorkflowInN8n(n8nData);
     externalWorkflowId = n8nWorkflow.data.id;
+    await activateWorkflow(externalWorkflowId);
     console.log("Created workflow in N8N..."); 
   } catch (error) {
     console.error(error);
@@ -59,6 +60,7 @@ const update = async (workflowId, data) => {
       const n8nData = mapToN8nWorkflowFormat(data);
       console.log("Updating workflow in N8N...");
       const updatedN8nWorkflow = await updateWorkflowInN8n(existingWorkflowData.externalWorkflowId, n8nData);
+      await activateWorkflow(existingWorkflowData.externalWorkflowId);
       console.log("Updated workflow in N8N...");    
     } catch (error) {
       console.error(error);

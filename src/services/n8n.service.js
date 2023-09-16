@@ -21,6 +21,10 @@ const invokeN8n = async (path, method, additionalInfo) => {
   }
 }
 
+const activateWorkflow = async (externalWorkflowId) => {
+  return invokeN8n(`workflows/${externalWorkflowId}/activate`, "post", {})
+}
+
 const createWorkflowInN8n = async (transformedWorkflow) => {
   return invokeN8n("workflows", "post", transformedWorkflow)
 }
@@ -33,5 +37,6 @@ const updateWorkflowInN8n = async (externalWorkflowId, transformedWorkflow) => {
 
 export {
   createWorkflowInN8n,
-  updateWorkflowInN8n
+  updateWorkflowInN8n,
+  activateWorkflow
 };
